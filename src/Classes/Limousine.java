@@ -39,9 +39,13 @@ public class Limousine {
 		Interface.clearConsole();
 		
 		this.no_immatriculation = validerImmatriculation();
+		this.couleur = validerCouleur();
+		this.capacite = validerCapacite();
+		this.nb_passagers = validerPassagers();
+		
 	}
 	
-	public String validerImmatriculation() {
+	private String validerImmatriculation() {
 		String str = "";
 		
 		do {
@@ -51,6 +55,39 @@ public class Limousine {
 		
 		return str;
 	}
+	
+	private String validerCouleur() {
+		String str = "";
+		
+		do {
+			System.out.print("Veuillez entree la couleur du vehicule : \n");
+			str = Interface.lecture();
+		} while (str.length() == 0);
+		
+		return str;
+	} 
+	
+	private int validerCapacite() {
+		String str = "";
+		
+		do {
+			System.out.print("Veuillez entree le nombre de passager (maximum de 6) : \n");
+			str = Interface.lecture();
+		} while (!(Interface.validerEntier(str, 0, 6)));
+		
+		return Integer.parseInt(str);
+	} 
+	
+	private int validerPassagers() {
+		String str = "";
+		
+		do {
+			System.out.print("Veuillez entree le nombre de passager (maximum de 6) : \n");
+			str = Interface.lecture();
+		} while (!(Interface.validerEntier(str, 0, 6)));
+		
+		return Integer.parseInt(str);
+	} 
 	
 	@Override 
 	public String toString() { 

@@ -31,6 +31,29 @@ public class Interface {
 
 	}
 	
+	// valider si chiffre entree est un entier
+	public static boolean validerEntier(String valeur, int plageDebut, int plageFin)
+	{
+		int choixUtilisateur;
+
+		try { 
+			choixUtilisateur = Integer.parseInt(valeur); 
+	        
+	    } 
+		catch(NumberFormatException e) { 
+	        return false; 
+	    }
+		
+		if((choixUtilisateur >= plageDebut) && (choixUtilisateur <= plageFin))
+		{
+			return true;
+		}
+
+		return false;
+
+		
+	}
+	
 /*
 	public void initialiser() {
 		
@@ -349,29 +372,6 @@ public class Interface {
 	private static void afficherEnTete(String titre)
 	{
 		System.out.print("***** " + titre + " *****");
-		
-	}
-	
-	// valider si chiffre entree est un entier
-	private static boolean validerEntier(String valeur, int plageDebut, int plageFin)
-	{
-		int choixUtilisateur;
-
-		try { 
-			choixUtilisateur = Integer.parseInt(valeur); 
-	        
-	    } 
-		catch(NumberFormatException e) { 
-	        return false; 
-	    }
-		
-		if((choixUtilisateur >= plageDebut) && (choixUtilisateur <= plageFin))
-		{
-			return true;
-		}
-
-		return false;
-
 		
 	}
 	
