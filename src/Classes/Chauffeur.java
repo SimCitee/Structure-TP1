@@ -49,4 +49,11 @@ public class Chauffeur {
 			   "Annee embauche : " + String.valueOf(this.annee_embauche);
 	}
 	
+	public void createNoIdentification() {
+		//TODO ... create no_identification after the creation of a chauffeur
+		//un numero d’identification composé des trois premiers caractères du
+		//nom, du premier caractère du prénom et des deux derniers chiffres
+		//de l’année d’embauche.
+	}
+	
 }
