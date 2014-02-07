@@ -1,5 +1,7 @@
 package Classes;
 
-public class ExceptionBlank {
+public class ExceptionBlank extends Exception {
 
+	// TESTS!!! GITHUB A MARDE
+	
 }
