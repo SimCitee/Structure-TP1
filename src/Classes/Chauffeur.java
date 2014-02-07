@@ -8,6 +8,13 @@ public class Chauffeur {
 	private String 	no_identification;
 	private int		annee_embauche;
 	
+	public Chauffeur(String nom, String prenom, String adresse, int annee_embauche) {
+		this.nom = nom;
+		this.prenom = prenom;
+		this.adresse = adresse;
+		this.annee_embauche = annee_embauche;
+	}
+	
 	public String getNom() {
 		return nom;
 	}
@@ -50,10 +57,7 @@ public class Chauffeur {
 	}
 	
 	public void createNoIdentification() {
-		//TODO ... create no_identification after the creation of a chauffeur
-		//un numero d’identification composé des trois premiers caractères du
-		//nom, du premier caractère du prénom et des deux derniers chiffres
-		//de l’année d’embauche.
+		no_identification = nom.substring(0, 3) + prenom.substring(0, 1) + String.valueOf(annee_embauche).substring(2, 4);
 	}
 	
 }
