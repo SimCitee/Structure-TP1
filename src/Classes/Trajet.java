@@ -9,6 +9,10 @@ public class Trajet {
 	private int 	kilo_arrivee;
 	private Limousine limo;
 	
+	public Trajet(Limousine limousine) {
+		this.limo = limousine;
+	}
+	
 	public String getVille_depart() {
 		return ville_depart;
 	}
@@ -38,6 +42,36 @@ public class Trajet {
 	}
 	public void setLimo(Limousine limo) {
 		this.limo = limo;
+	}
+	
+	public void saisirTrajet() {
+		Interface.clearConsole();
+		
+		this.ville_depart = validerVilleDepart();
+		this.ville_arrivee = validerVilleArrivee();
+		
+	}
+	
+	private String validerVilleDepart() {
+		String str = "";
+		
+		do {
+			System.out.print("Veuillez entree la ville de depart : \n");
+			str = Interface.lecture();
+		} while (str.length() == 0);
+		
+		return str;
+	}
+	
+	private String validerVilleArrivee() {
+		String str = "";
+		
+		do {
+			System.out.print("Veuillez entree la ville d'arrivee (different de la ville de depart) : \n");
+			str = Interface.lecture();
+		} while (str.length() == 0 || str.equalsIgnoreCase(this.ville_depart) );
+		
+		return str;
 	}
 	
 	@Override 

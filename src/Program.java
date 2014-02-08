@@ -7,14 +7,10 @@ public class Program {
 		
 		Chauffeur jonathan = new Chauffeur("Thivierge", "Jonathan", "1234 adresse", 1986);
 		jonathan.createNoIdentification();
-				
+		
 		Interface layout = new Interface();
 		
-		Limousine[] limos = new Limousine[5];
-		
-		for (int i = 0; i < limos.length; i++) {
-			
-		}
+		layout.initialiser();
 		
 		//i.initialiser();
 		

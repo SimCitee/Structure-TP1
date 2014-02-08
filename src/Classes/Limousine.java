@@ -9,7 +9,21 @@ public class Limousine {
 	private String couleur;
 	private int capacite;
 	private int nb_passagers;
+	private Trajet trajet;
+	private Chauffeur chauffeur;
 	
+	public Trajet getTrajet() {
+		return trajet;
+	}
+	public void setTrajet(Trajet trajet) {
+		this.trajet = trajet;
+	}
+	public Chauffeur getChauffeur() {
+		return chauffeur;
+	}
+	public void setChauffeur(Chauffeur chauffeur) {
+		this.chauffeur = chauffeur;
+	}
 	public String getNo_immatriculation() {
 		return no_immatriculation;
 	}
@@ -71,9 +85,9 @@ public class Limousine {
 		String str = "";
 		
 		do {
-			System.out.print("Veuillez entree le nombre de passager (maximum de 6) : \n");
+			System.out.print("Veuillez entree la capacite du reservoir (max 100 litres) : \n");
 			str = Interface.lecture();
-		} while (!(Interface.validerEntier(str, 0, 6)));
+		} while (!(Interface.validerEntier(str, 0, 100)));
 		
 		return Integer.parseInt(str);
 	} 

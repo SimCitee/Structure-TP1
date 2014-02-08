@@ -54,36 +54,21 @@ public class Interface {
 		
 	}
 	
-/*
-	public void initialiser() {
+public void initialiser() {
 		
-		Interface.afficherEnTete("Veuillez entree ");
+		Interface.afficherEnTete("Bienvenue chez AutoSuperieur");
 		
-		String choixUtilisateur;
-		
-		while(true)
-		{
-			
-			System.out.print("\n1. Acheter des billets");
-			System.out.print("\n2. Afficher les details des transactions");
-			System.out.print("\n0. Quitter");
-			
-			choixUtilisateur = Interface.lecture();
-			
-		    if(Interface.validerEntier(choixUtilisateur, 0, 2))
-		    {
-		    	//Le choix est valide, on sort de la validation
-		    	break;
-		    }
-		    
-		    clearConsole();
-		}
+		Compagnie.getInstance().saisirCompagnie();
 	}
-	
 	
 	public static void afficherEntete()
 	{
 		Interface.afficherEnTete("Menu principal");
+	}
+	
+	private static void afficherEnTete(String titre)
+	{
+		System.out.print("***** " + titre + " *****");
 	}
 	
 	//Interface principale
@@ -95,13 +80,14 @@ public class Interface {
 		while(true)
 		{
 			
-			System.out.print("\n1. Acheter des billets");
-			System.out.print("\n2. Afficher les details des transactions");
+			System.out.print("\n1. Reserver une limousine");
+			System.out.print("\n2. Afficher les limousines par chauffeur");
+			System.out.print("\n3. Afficher details trajets");
 			System.out.print("\n0. Quitter");
 			
-			choixUtilisateur = Interface.lectureEntreUtilisateur();
+			choixUtilisateur = lecture();
 			
-		    if(Interface.validerChoixEntier(choixUtilisateur, 0, 2))
+		    if (validerEntier(choixUtilisateur, 0, 3))
 		    {
 		    	//Le choix est valide, on sort de la validation
 		    	break;
@@ -115,25 +101,24 @@ public class Interface {
 		{
 		
 			case "0" :
-				Authentification.deconnexion(UtilisateurActif.getInstance());
 				return;
 				//break;
 			
 			case "1" :
-				menuAcheterBillets();
+				reserverLimousine();
 				break;
 				
 			default :
-				menuAfficherTransactions();
+				reserverLimousine();
 			
 		}
 		
 	}
 	
 	//Interface d'achat de billets
-	private static void menuAcheterBillets()
+	private static void reserverLimousine()
 	{
-		Integer compteur = 1;
+		/*Integer compteur = 1;
 		
 		ConsoleTableLayout layout = new ConsoleTableLayout(3, 15, 17, 15);
 	
@@ -194,10 +179,10 @@ public class Interface {
 				compteur++;
 			}
 		}
-		
+		*/
 	}
 	
-	
+	/*
 	private static void menuTypeBillets(Spectacle spectacle)
 	{
 		String choixUtilisateur;
@@ -366,13 +351,6 @@ public class Interface {
 		System.out.println("");
 		System.out.println("Le solde est insufisant!");
 		System.out.println("");
-	}
-	
-	
-	private static void afficherEnTete(String titre)
-	{
-		System.out.print("***** " + titre + " *****");
-		
 	}
 	
 	private static void afficherMsgErreur()
