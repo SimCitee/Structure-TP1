@@ -9,6 +9,13 @@ public class Trajet {
 	private int 	kilo_arrivee;
 	private Limousine limo;
 	
+	public Trajet(String v_depart, String v_arrivee, int k_depart, int k_arrivee) {
+		this.ville_depart = v_depart;
+		this.ville_arrivee = v_arrivee;
+		this.kilo_depart = k_depart;
+		this.kilo_arrivee = k_arrivee;
+	}
+	
 	public Trajet(Limousine limousine) {
 		this.limo = limousine;
 	}
@@ -44,15 +51,7 @@ public class Trajet {
 		this.limo = limo;
 	}
 	
-	public void saisirTrajet() {
-		Interface.clearConsole();
-		
-		this.ville_depart = validerVilleDepart();
-		this.ville_arrivee = validerVilleArrivee();
-		
-	}
-	
-	private String validerVilleDepart() {
+	public static String validerVilleDepart() {
 		String str = "";
 		
 		do {
@@ -63,15 +62,37 @@ public class Trajet {
 		return str;
 	}
 	
-	private String validerVilleArrivee() {
+	public static String validerVilleArrivee(String ville_depart) {
 		String str = "";
 		
 		do {
 			System.out.print("Veuillez entree la ville d'arrivee (different de la ville de depart) : \n");
 			str = Interface.lecture();
-		} while (str.length() == 0 || str.equalsIgnoreCase(this.ville_depart) );
+		} while (str.length() == 0 || str.equalsIgnoreCase(ville_depart) );
 		
 		return str;
+	}
+	
+	public static int validerKiloDepart() {
+		String str = "";
+		
+		do {
+			System.out.print("Veuillez entree le kilometrage de depart : \n");
+			str = Interface.lecture();
+		} while (Interface.validerEntier(str,  0, 500000) );
+		
+		return Integer.parseInt(str);
+	}
+	
+	public static int validerKiloArrivee(int kilo_depart) {
+		String str = "";
+		
+		do {
+			System.out.print("Veuillez entree le kilometrage d'arrivee : \n");
+			str = Interface.lecture();
+		} while (!(Interface.validerEntier(str,  0, 500000)) || (kilo_depart >= Integer.parseInt(str)) );
+		
+		return Integer.parseInt(str);
 	}
 	
 	@Override 

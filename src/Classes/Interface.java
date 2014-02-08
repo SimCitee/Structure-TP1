@@ -56,9 +56,11 @@ public class Interface {
 	
 	public void initialiser() {
 		
-		Interface.afficherEnTete("Bienvenue chez AutoSuperieur");
+		afficherEnTete("Bienvenue chez AutoSuperieur");
 		
-		Compagnie.getInstance().saisirCompagnie();
+		Compagnie.getInstance().saisirRessourceCompagnie();
+		
+		menuPrincipal();
 	}
 	
 	public static void afficherEntete()
@@ -122,6 +124,7 @@ public class Interface {
 	//Interface d'achat de billets
 	private static void reserverLimousine()
 	{
+		Trajet t = Compagnie.getInstance().saisirTrajet();
 		
 		
 		

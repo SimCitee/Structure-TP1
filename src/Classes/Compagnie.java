@@ -25,7 +25,7 @@ public class Compagnie {
 		this.chauffeurs = new Chauffeur[nb_chauffeurs];
 	}
 	
-	public void saisirCompagnie() {
+	public void saisirRessourceCompagnie() {
 		String no_immatriculation;
 		String couleur;
 		int capacite;
@@ -56,6 +56,25 @@ public class Compagnie {
 			
 			chauffeur = new Chauffeur(nom, prenom, adresse, annee_embauche);
 		}
+		
+	}
+	
+	public Trajet saisirTrajet() {
+		String 	ville_depart;
+		String 	ville_arrivee;
+		int 	kilo_depart;
+		int 	kilo_arrivee;
+		
+		Interface.clearConsole();
+		
+		ville_depart = Trajet.validerVilleDepart();
+		ville_arrivee = Trajet.validerVilleArrivee(ville_depart);
+		kilo_depart = Trajet.validerKiloDepart();
+		kilo_arrivee = Trajet.validerKiloArrivee(kilo_depart);
+		
+		Trajet t = new Trajet(ville_depart, ville_arrivee, kilo_depart, kilo_arrivee);
+		
+		return t;
 		
 	}
 	
