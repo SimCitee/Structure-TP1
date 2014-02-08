@@ -12,6 +12,13 @@ public class Limousine {
 	private Trajet trajet;
 	private Chauffeur chauffeur;
 	
+	public Limousine(String no_immatriculation, String couleur, int capacite, int nb_passagers) {
+		this.no_immatriculation = no_immatriculation;
+		this.couleur = couleur;
+		this.capacite = capacite;
+		this.nb_passagers = nb_passagers;
+	}
+	
 	public Trajet getTrajet() {
 		return trajet;
 	}
@@ -49,17 +56,7 @@ public class Limousine {
 		this.nb_passagers = nb_passagers;
 	}
 	
-	public void saisirLimousine() {
-		Interface.clearConsole();
-		
-		this.no_immatriculation = validerImmatriculation();
-		this.couleur = validerCouleur();
-		this.capacite = validerCapacite();
-		this.nb_passagers = validerPassagers();
-		
-	}
-	
-	private String validerImmatriculation() {
+	public static String validerImmatriculation() {
 		String str = "";
 		
 		do {
@@ -70,7 +67,7 @@ public class Limousine {
 		return str;
 	}
 	
-	private String validerCouleur() {
+	public static String validerCouleur() {
 		String str = "";
 		
 		do {
@@ -81,7 +78,7 @@ public class Limousine {
 		return str;
 	} 
 	
-	private int validerCapacite() {
+	public static int validerCapacite() {
 		String str = "";
 		
 		do {
@@ -92,7 +89,7 @@ public class Limousine {
 		return Integer.parseInt(str);
 	} 
 	
-	private int validerPassagers() {
+	public static int validerPassagers() {
 		String str = "";
 		
 		do {

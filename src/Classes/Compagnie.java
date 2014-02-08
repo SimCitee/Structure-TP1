@@ -26,8 +26,37 @@ public class Compagnie {
 	}
 	
 	public void saisirCompagnie() {
+		String no_immatriculation;
+		String couleur;
+		int capacite;
+		int nb_passagers;
+		String 	nom;
+		String 	prenom;
+		String 	adresse;
+		int		annee_embauche;
+		
+		
 		this.validerNombreLimousines();
 		this.validerNombreChauffeurs();
+		
+		for(Limousine limo : this.limousines) {
+			no_immatriculation = Limousine.validerImmatriculation();
+			couleur = Limousine.validerCouleur();
+			capacite = Limousine.validerPassagers();
+			nb_passagers = Limousine.validerPassagers();
+			
+			limo = new Limousine(no_immatriculation, couleur, capacite, nb_passagers);
+		}
+		
+		for(Chauffeur chauffeur : this.chauffeurs) {
+			nom = Chauffeur.validerNom();
+			prenom = Chauffeur.validerPrenom();
+			adresse = Chauffeur.validerAdresse();
+			annee_embauche = Integer.parseInt(Chauffeur.validerAnneeEmbauche());
+			
+			chauffeur = new Chauffeur(nom, prenom, adresse, annee_embauche);
+		}
+		
 	}
 	
 	public boolean validerNombreLimousines() {

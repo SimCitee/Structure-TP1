@@ -6,7 +6,6 @@ public class Program {
 		
 		
 		Chauffeur jonathan = new Chauffeur("Thivierge", "Jonathan", "1234 adresse", 1986);
-		jonathan.createNoIdentification();
 		
 		Interface layout = new Interface();
 		

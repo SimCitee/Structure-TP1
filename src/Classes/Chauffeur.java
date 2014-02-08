@@ -13,6 +13,8 @@ public class Chauffeur {
 		this.prenom = prenom;
 		this.adresse = adresse;
 		this.annee_embauche = annee_embauche;
+		
+		this.createNoIdentification();
 	}
 	
 	public String getNom() {
@@ -46,6 +48,50 @@ public class Chauffeur {
 		this.annee_embauche = annee_embauche;
 	}
 	
+	public static String validerNom() {
+		String str = "";
+		
+		do {
+			System.out.print("Veuillez entree un nom : \n");
+			str = Interface.lecture();
+		} while ((str.length() <= 0 || str.length() > 30) || (Interface.isNumeric(str) == false));
+		
+		return str;
+	} 
+	
+	public static String validerPrenom() {
+		String str = "";
+		
+		do {
+			System.out.print("Veuillez entree un prenom : \n");
+			str = Interface.lecture();
+		} while ((str.length() <= 0 || str.length() > 30) || (Interface.isNumeric(str) == false));
+		
+		return str;
+	} 
+	
+	public static String validerAdresse() {
+		String str = "";
+		
+		do {
+			System.out.print("Veuillez entree une adresse: \n");
+			str = Interface.lecture();
+		} while ( str.length() <= 0 || str.length() > 50);
+		
+		return str;
+	} 
+	
+	public static String validerAnneeEmbauche() {
+		String str = "";
+		
+		do {
+			System.out.print("Veuillez entree l'annee d'embauche (entre 1950 et 2000) : \n");
+			str = Interface.lecture();
+		} while (!(Interface.validerEntier(str, 1950, 2000)));
+		
+		return str;
+	} 
+	
 	@Override 
 	public String toString() { 
 		return "Caracteristique \n"+
@@ -56,7 +102,7 @@ public class Chauffeur {
 			   "Annee embauche : " + String.valueOf(this.annee_embauche);
 	}
 	
-	public void createNoIdentification() {
+	private void createNoIdentification() {
 		no_identification = nom.substring(0, 3) + prenom.substring(0, 1) + String.valueOf(annee_embauche).substring(2, 4);
 	}
 	

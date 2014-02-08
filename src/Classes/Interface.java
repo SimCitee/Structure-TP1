@@ -54,7 +54,7 @@ public class Interface {
 		
 	}
 	
-public void initialiser() {
+	public void initialiser() {
 		
 		Interface.afficherEnTete("Bienvenue chez AutoSuperieur");
 		
@@ -115,9 +115,16 @@ public void initialiser() {
 		
 	}
 	
+	public static boolean isNumeric(String s) {  
+	    return s.matches("[-+]?\\d*\\.?\\d+");  
+	}
+	
 	//Interface d'achat de billets
 	private static void reserverLimousine()
 	{
+		
+		
+		
 		/*Integer compteur = 1;
 		
 		ConsoleTableLayout layout = new ConsoleTableLayout(3, 15, 17, 15);
