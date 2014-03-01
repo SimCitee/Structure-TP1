@@ -77,20 +77,20 @@ public class Trajet {
 		String str = "";
 		
 		do {
-			System.out.print("Veuillez entree le kilometrage de depart : \n");
+			System.out.print("Veuillez entree le kilometrage de depart (max 500 000) : \n");
 			str = Interface.lecture();
-		} while (Interface.validerEntier(str,  0, 500000) );
+		} while (!(Interface.validerEntier(str,  0, 500000)));
 		
 		return Integer.parseInt(str);
 	}
 	
-	public static int validerKiloArrivee(int kilo_depart) {
+	public static int validerDistance() {
 		String str = "";
 		
 		do {
-			System.out.print("Veuillez entree le kilometrage d'arrivee : \n");
+			System.out.print("Veuillez entree la distance du trajet (max 500 km) : \n");
 			str = Interface.lecture();
-		} while (!(Interface.validerEntier(str,  0, 500000)) || (kilo_depart >= Integer.parseInt(str)) );
+		} while (!(Interface.validerEntier(str,  0, 500)));
 		
 		return Integer.parseInt(str);
 	}

@@ -17,6 +17,7 @@ public class Limousine {
 		this.couleur = couleur;
 		this.capacite = capacite;
 		this.nb_passagers = nb_passagers;
+		this.trajet = null;
 	}
 	
 	public Trajet getTrajet() {

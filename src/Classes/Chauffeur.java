@@ -54,7 +54,7 @@ public class Chauffeur {
 		do {
 			System.out.print("Veuillez entree un nom : \n");
 			str = Interface.lecture();
-		} while ((str.length() <= 0 || str.length() > 30) || (Interface.isNumeric(str) == false));
+		} while ((str.length() <= 0 || str.length() > 30) || (Interface.isNumeric(str) == true));
 		
 		return str;
 	} 
@@ -65,7 +65,7 @@ public class Chauffeur {
 		do {
 			System.out.print("Veuillez entree un prenom : \n");
 			str = Interface.lecture();
-		} while ((str.length() <= 0 || str.length() > 30) || (Interface.isNumeric(str) == false));
+		} while ((str.length() <= 0 || str.length() > 30) || (Interface.isNumeric(str) == true));
 		
 		return str;
 	} 

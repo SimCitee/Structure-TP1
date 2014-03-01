@@ -4,9 +4,20 @@ public class Compagnie {
 
 	private Limousine[] limousines;
 	private Chauffeur[] chauffeurs;
+	private int compteurChauffeur;
+	private int compteurLimousine;
 	private static Compagnie INSTANCE = new Compagnie();
 
 	private Compagnie() {
+		this.compteurChauffeur = this.compteurLimousine = 0;
+	}
+	
+	public static Compagnie getInstance() {
+		if (INSTANCE == null) {
+			INSTANCE = new Compagnie();
+		}
+		
+		return INSTANCE;
 	}
 	
 	public Limousine[] getLimousines() {
@@ -19,6 +30,10 @@ public class Compagnie {
 
 	public Chauffeur[] getChauffeurs() {
 		return chauffeurs;
+	}
+	
+	public Chauffeur getChauffeur(int index) {
+		return this.chauffeurs[index];
 	}
 
 	public void setNbChauffeurs(int nb_chauffeurs) {
@@ -35,26 +50,40 @@ public class Compagnie {
 		String 	adresse;
 		int		annee_embauche;
 		
-		
 		this.validerNombreLimousines();
 		this.validerNombreChauffeurs();
 		
 		for(Limousine limo : this.limousines) {
+			
+			Interface.afficherEnTete("Saisir vehicule no." + (this.compteurLimousine+1));
+			
 			no_immatriculation = Limousine.validerImmatriculation();
 			couleur = Limousine.validerCouleur();
-			capacite = Limousine.validerPassagers();
+			capacite = Limousine.validerCapacite();
 			nb_passagers = Limousine.validerPassagers();
 			
 			limo = new Limousine(no_immatriculation, couleur, capacite, nb_passagers);
+			
+			this.limousines[this.compteurLimousine] = limo;
+			
+			this.compteurLimousine++;
+			
 		}
 		
 		for(Chauffeur chauffeur : this.chauffeurs) {
+			
+			Interface.afficherEnTete("Saisir chauffeur no." + (this.compteurChauffeur+1));
+			
 			nom = Chauffeur.validerNom();
 			prenom = Chauffeur.validerPrenom();
 			adresse = Chauffeur.validerAdresse();
 			annee_embauche = Integer.parseInt(Chauffeur.validerAnneeEmbauche());
 			
 			chauffeur = new Chauffeur(nom, prenom, adresse, annee_embauche);
+			
+			this.chauffeurs[this.compteurChauffeur] = chauffeur;
+			
+			this.compteurChauffeur++;
 		}
 		
 	}
@@ -70,7 +99,8 @@ public class Compagnie {
 		ville_depart = Trajet.validerVilleDepart();
 		ville_arrivee = Trajet.validerVilleArrivee(ville_depart);
 		kilo_depart = Trajet.validerKiloDepart();
-		kilo_arrivee = Trajet.validerKiloArrivee(kilo_depart);
+		kilo_arrivee = Trajet.validerDistance(); // obtenir la distance du trajet
+		kilo_arrivee += kilo_depart;	// ajouter le kilometrage de depart a la distance du trajet
 		
 		Trajet t = new Trajet(ville_depart, ville_arrivee, kilo_depart, kilo_arrivee);
 		
@@ -104,12 +134,16 @@ public class Compagnie {
 		return true;
 	}
 	
-	public static Compagnie getInstance() {
-		if (INSTANCE == null) {
-			INSTANCE = new Compagnie();
+	public Limousine trouverLimousineDisponible() {
+		
+		for (Limousine l : this.limousines) {
+			if (l.getNb_passagers() > 0) {
+				
+				return l;
+			}
 		}
 		
-		return INSTANCE;
+		return null;
 	}
 	
 	@Override 

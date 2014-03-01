@@ -68,13 +68,13 @@ public class Interface {
 		Interface.afficherEnTete("Menu principal");
 	}
 	
-	private static void afficherEnTete(String titre)
+	public static void afficherEnTete(String titre)
 	{
-		System.out.print("***** " + titre + " *****");
+		System.out.print("***** " + titre + " ***** \n\n");
 	}
 	
 	//Interface principale
-	public static void menuPrincipal()
+	public void menuPrincipal()
 	{
 		
 		String choixUtilisateur;
@@ -107,11 +107,14 @@ public class Interface {
 				//break;
 			
 			case "1" :
+				clearConsole();
+				clearConsole();
 				reserverLimousine();
 				break;
 				
 			default :
-				reserverLimousine();
+				clearConsole();
+				menuPrincipal();
 			
 		}
 		
@@ -122,74 +125,59 @@ public class Interface {
 	}
 	
 	//Interface d'achat de billets
-	private static void reserverLimousine()
+	private void reserverLimousine()
 	{
-		Trajet t = Compagnie.getInstance().saisirTrajet();
+		int compteur;
+		int choix;
+		String str;
+		Limousine l;
 		
+		l = Compagnie.getInstance().trouverLimousineDisponible();
 		
-		
-		/*Integer compteur = 1;
-		
-		ConsoleTableLayout layout = new ConsoleTableLayout(3, 15, 17, 15);
-	
-		String choixUtilisateur;
-		
-		Spectacles spectacles = Spectacles.getInstance();
-		
-		while(true)
-		{
-			//Affiche l'ent�te
-			layout.newLine("", "Specacle", "Date", "Lieu");
-			System.out.print("\n");
+		if ((l != null) || (Compagnie.getInstance().getChauffeurs().length == 0)) {
 			
+			System.out.print("Veuillez choisir un chauffeur : \n");
 			
-			
-			//Affiche tous les spectacles disponibles
-			for(Spectacle spectacle : spectacles.getListeSpectacles())
-			{
-				layout.newLine(compteur.toString() + ".",
-						spectacle.getArtiste(),
-						spectacle.getDate(),
-						spectacle.getNomSalle());
+			do {
 				
-				compteur++;
-			}
-			
-			layout.newLine("0", "Retour", "", "");
-			
-			
-			choixUtilisateur = Interfaces.lectureEntreUtilisateur();
-			
-			if(Interfaces.validerChoixEntier(choixUtilisateur, 0, compteur - 1))
-		    {
-		    	//Le choix est valide, on sort de la validation
-		    	break;
-		    }
-			
-			clearConsole();
-		}
-		
-		if(choixUtilisateur.equals("0"))
-		{
-			//Retour au menu principal
-			menuPrincipal();
-		}
-		else
-		{
-			compteur = 1;
-			//Compte les spectacles pour trouver le bon
-			for(Spectacle spectacle : spectacles.getListeSpectacles())
-			{
-				if(compteur == Integer.parseInt(choixUtilisateur))
-				{
-					menuTypeBillets(spectacle);
-					break;
+				compteur = 1;
+				
+				for (Chauffeur c : Compagnie.getInstance().getChauffeurs()) {
+					System.out.print(compteur + ". " + c.getPrenom() + " " + c.getNom() + "\n");
+					compteur++;
 				}
 				
-				compteur++;
-			}
+				str = Interface.lecture();
+				
+				if (!(Interface.validerEntier(str, 1, Compagnie.getInstance().getChauffeurs().length))) {
+					str = "";
+					System.out.print("Choix invalide.");
+				}
+				
+			} while (str.equals(""));
+			
+			
+			Chauffeur c = Compagnie.getInstance().getChauffeur(Integer.parseInt(str) - 1);
+			Trajet t = Compagnie.getInstance().saisirTrajet();	// creer le trajet
+			
+			l.setChauffeur(c);									// assigner le chauffeur
+			l.setTrajet(t);										// assigner le trajet
+			
+			
+			Interface.afficherEnTete("Chauffeur et trajet assigne a la limousine avec le no. immatriculation : " +
+										l.getNo_immatriculation()
+									);
+			
+			Interface.lecture();
+			menuPrincipal();		// retour au menu principal
 		}
-		*/
+		else {
+			if (l == null)
+				Interface.afficherEnTete("Aucune limousine disponible.");
+			else
+				Interface.afficherEnTete("Aucun chauffeur disponible.");
+		}
+
 	}
 	
 	/*
