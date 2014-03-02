@@ -182,7 +182,7 @@ public class Compagnie {
 		choix = Integer.parseInt(str);
 		choix--;
 
-		System.out.println("Voici les limouses conduites par " + chauffeurs[choix].getPrenom() + chauffeurs[choix].getNom());
+		System.out.println("Voici les limouses conduites par " + chauffeurs[choix].getPrenom() + " " + chauffeurs[choix].getNom());
 		
 		for(int j = 0; j < limousines.length; j++) {
 						

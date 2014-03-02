@@ -94,7 +94,7 @@ public class Chauffeur {
 	
 	@Override 
 	public String toString() { 
-		return "Caracteristique \n"+
+		return "Caracteristique chauffeur \n"+
 			   "================================================== \n"+
 			   "Nom : "+ this.nom + this.prenom + "\n" +
 			   "Adresse : "+ this.adresse + "\n" +

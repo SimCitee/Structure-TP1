@@ -122,7 +122,8 @@ public class Limousine {
 	
 	@Override 
 	public String toString() { 
-		return "Caracteristique Trajet \n"+
+		return "Caracteristique Limousine \n"+
+			   "================================================== \n"+
 			   "No. Immatriculation : "+ this.no_immatriculation + "\n" +
 			   "Capacite : "+ String.valueOf(this.capacite) + "\n" +
 			   "Nombre passagers : " + String.valueOf(this.nb_passagers) + "\n" +

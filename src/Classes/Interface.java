@@ -103,9 +103,8 @@ public class Interface {
 		{
 		
 			case "0" :
-				return;
-				//break;
-			
+				System.exit(0);
+				break;
 			case "1" :
 				clearConsole();
 				clearConsole();
@@ -179,9 +178,6 @@ public class Interface {
 			Interface.afficherEnTete("Chauffeur et trajet assigne a la limousine avec le no. immatriculation : " +
 										l.getNo_immatriculation()
 									);
-			
-			Interface.lecture();
-			menuPrincipal();		// retour au menu principal
 		}
 		else {
 			if (l == null)
@@ -189,6 +185,9 @@ public class Interface {
 			else
 				Interface.afficherEnTete("Aucun chauffeur disponible.");
 		}
+		
+		Interface.lecture();
+		menuPrincipal();		// retour au menu principal
 
 	}
 

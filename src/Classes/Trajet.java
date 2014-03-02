@@ -13,11 +13,8 @@ public class Trajet {
 		this.ville_arrivee = v_arrivee;
 		this.kilo_depart = k_depart;
 		this.kilo_arrivee = k_arrivee;
-	}
-	
-	public Trajet() {
-	}
-	
+	}  
+	 
 	public String getVille_depart() {
 		return ville_depart;
 	}
@@ -89,7 +86,7 @@ public class Trajet {
 	
 	@Override 
 	public String toString() { 
-		return "Caracteristique \n"+
+		return "Caracteristique Trajet \n"+
 			   "================================================== \n"+
 			   "Ville depart : "+ this.ville_depart + "\n"+
 			   "Ville arrivee : "+ this.ville_arrivee + "\n"+
