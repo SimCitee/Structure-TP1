@@ -7,21 +7,38 @@ import java.util.Iterator;
 
 public class Interface {
 	
-	public static String lecture()
+	public static String lecture ()
 	{
 		String str = "";
 		
-		try{
-		    BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
-		    str = bufferRead.readLine(); 
+		try {
+			str = Interface.lectureException();
 		}
-		catch(IOException e)
-		{
+		catch(ExceptionBlank e) {
+			System.err.println("L'entree de donnees contient : " + e.str);
+			System.err.println(e.getMessage());
+		}
+		catch(IOException e) {
 			e.printStackTrace();
 		}
 		
 		return str;
 		
+	}
+	
+	private static String lectureException () throws ExceptionBlank, IOException
+	{
+		String str = "";
+
+	    BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
+	    str = bufferRead.readLine(); 
+
+		if(str == "") {
+			throw new ExceptionBlank(str);
+		}
+		else {
+			return str;
+		}
 	}
 	
 	public static void clearConsole()
