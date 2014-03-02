@@ -7,7 +7,6 @@ public class Trajet {
 	private String 	ville_arrivee;
 	private int 	kilo_depart;
 	private int 	kilo_arrivee;
-	private Limousine limo;
 	
 	public Trajet(String v_depart, String v_arrivee, int k_depart, int k_arrivee) {
 		this.ville_depart = v_depart;
@@ -16,8 +15,7 @@ public class Trajet {
 		this.kilo_arrivee = k_arrivee;
 	}
 	
-	public Trajet(Limousine limousine) {
-		this.limo = limousine;
+	public Trajet() {
 	}
 	
 	public String getVille_depart() {
@@ -43,12 +41,6 @@ public class Trajet {
 	}
 	public void setKilo_arrivee(int kilo_arrivee) {
 		this.kilo_arrivee = kilo_arrivee;
-	}
-	public Limousine getLimo() {
-		return limo;
-	}
-	public void setLimo(Limousine limo) {
-		this.limo = limo;
 	}
 	
 	public static String validerVilleDepart() {
@@ -99,11 +91,10 @@ public class Trajet {
 	public String toString() { 
 		return "Caracteristique \n"+
 			   "================================================== \n"+
-			   "Ville depart : "+ this.ville_depart +
-			   "Ville arrivee : "+ this.ville_arrivee +
-			   "Kilometrage depart : " + String.valueOf(this.kilo_depart) +
-			   "Kilometrage arrivee : " + String.valueOf(this.kilo_arrivee) + 
-			   "Limousine : \n"+ limo.toString();
+			   "Ville depart : "+ this.ville_depart + "\n"+
+			   "Ville arrivee : "+ this.ville_arrivee + "\n"+
+			   "Kilometrage depart : " + String.valueOf(this.kilo_depart) + "\n"+
+			   "Kilometrage arrivee : " + String.valueOf(this.kilo_arrivee) + "\n";
 	}
 	
 }

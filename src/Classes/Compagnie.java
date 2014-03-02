@@ -138,8 +138,7 @@ public class Compagnie {
 	public Limousine trouverLimousineDisponible() {
 		
 		for (Limousine l : this.limousines) {
-			if (l.getNb_passagers() > 0) {
-				
+			if (!l.trajetAssocie()) {			
 				return l;
 			}
 		}
@@ -205,28 +204,12 @@ public class Compagnie {
 		
 		Interface.afficherEnTete("Afficher les trajets et les limousines utilisees");
 		
-		for(int i = 0; i < limousines.length; i++) {
-			if(limousines[i].trajetAssocie()) {
+		for(Limousine l : this.limousines) {
+			if(l.trajetAssocie()) {
 				
-				System.out.println("Trajets : ");
-				
-				System.out.println("Ville de depart : " + limousines[i].getTrajet().getVille_depart());
-				System.out.println("Ville d'arrivee : " + limousines[i].getTrajet().getVille_arrivee());
-				System.out.println("Kilometrage de depart : " + limousines[i].getTrajet().getKilo_depart());
-				System.out.println("Kilometrage d'arrivee : " + limousines[i].getTrajet().getKilo_arrivee());
-				
-				System.out.println("");
-				
-
-				System.out.println("Limousines : ");
-
-				System.out.println("Numero d'immatriculation : " + limousines[i].getNo_immatriculation());
-				System.out.println("Couleur : " + limousines[i].getCouleur());
-				System.out.println("Capacite : " + limousines[i].getCapacite());
-				System.out.println("Nombre de passagers : " + limousines[i].getNb_passagers());
-				System.out.println("Numero d'identification du chauffeur : " + limousines[i].getChauffeur().getNo_identification());
-
-				System.out.println("");
+				System.out.println(l.getTrajet().toString());
+				System.out.println(l.toString());
+				System.out.println(l.getChauffeur().toString());
 
 			}
 		}

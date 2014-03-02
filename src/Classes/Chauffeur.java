@@ -96,10 +96,10 @@ public class Chauffeur {
 	public String toString() { 
 		return "Caracteristique \n"+
 			   "================================================== \n"+
-			   "Nom : "+ this.nom + this.prenom +
-			   "Adresse : "+ this.adresse +
-			   "No. identification : " + this.no_identification +
-			   "Annee embauche : " + String.valueOf(this.annee_embauche);
+			   "Nom : "+ this.nom + this.prenom + "\n" +
+			   "Adresse : "+ this.adresse + "\n" +
+			   "No. identification : " + this.no_identification + "\n" +
+			   "Annee embauche : " + String.valueOf(this.annee_embauche) + "\n";
 	}
 	
 	private void createNoIdentification() {
