@@ -74,7 +74,7 @@ public class Interface {
 	}
 	
 	//Interface principale
-	public void menuPrincipal()
+	public static void menuPrincipal()
 	{
 		
 		String choixUtilisateur;
@@ -109,7 +109,19 @@ public class Interface {
 			case "1" :
 				clearConsole();
 				clearConsole();
-				reserverLimousine();
+				Interface.reserverLimousine();
+				break;
+				
+			case "2" :
+				clearConsole();
+				clearConsole();
+				Compagnie.getInstance().afficherLesLimousinesParChauffeur();
+				break;
+				
+			case "3" : 
+				clearConsole();
+				clearConsole();
+				Compagnie.getInstance().afficherTrajetsEtLimousines();
 				break;
 				
 			default :
@@ -125,7 +137,7 @@ public class Interface {
 	}
 	
 	//Interface d'achat de billets
-	private void reserverLimousine()
+	private static void reserverLimousine()
 	{
 		int compteur;
 		int choix;

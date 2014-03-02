@@ -29,6 +29,25 @@ public class Limousine {
 	public Chauffeur getChauffeur() {
 		return chauffeur;
 	}
+	
+	public boolean chauffeurAssocie() {
+		if(chauffeur != null) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public boolean trajetAssocie() {
+		if(trajet != null) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
 	public void setChauffeur(Chauffeur chauffeur) {
 		this.chauffeur = chauffeur;
 	}

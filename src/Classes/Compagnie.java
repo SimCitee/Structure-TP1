@@ -1,4 +1,5 @@
 package Classes;
+import java.io.*;
 
 public class Compagnie {
 
@@ -152,4 +153,86 @@ public class Compagnie {
 			   "Nombre de chauffeurs : " + this.chauffeurs.length;
 	}
 	
+	public void afficherLesLimousinesParChauffeur() {
+
+		int choix = 0;
+		String str = "";
+		
+		System.out.println("");
+		
+		Interface.afficherEnTete("Afficher les limousines d'un chauffeur");
+		
+		do {
+			
+			System.out.println("Veuillez choisir un chauffeur :");
+			
+			for(int i = 0; i < chauffeurs.length; i++) {
+				System.out.println((i+1) + ". " + chauffeurs[i].getPrenom() + " " + chauffeurs[i].getNom());
+			}
+	
+			str = Interface.lecture();
+			
+			if (!(Interface.validerEntier(str, 1, Compagnie.getInstance().getChauffeurs().length))) {
+				str = "";
+				System.out.println("Choix invalide.");
+			}
+
+		
+		} while(str == "");
+		
+		choix = Integer.parseInt(str);
+		choix--;
+
+		System.out.println("Voici les limouses conduites par " + chauffeurs[choix].getPrenom() + chauffeurs[choix].getNom());
+		
+		for(int j = 0; j < limousines.length; j++) {
+						
+			if(limousines[j].chauffeurAssocie()) {
+				if(limousines[j].getChauffeur().getNo_identification().equalsIgnoreCase(chauffeurs[choix].getNo_identification())) {
+					System.out.println("Numero d'immatriculation : " + limousines[j].getNo_immatriculation());
+				}
+			}
+		}
+		
+		Interface.lecture();
+		Interface.menuPrincipal();
+	}
+	
+	
+	public void afficherTrajetsEtLimousines() {
+		
+		System.out.println("");
+		
+		Interface.afficherEnTete("Afficher les trajets et les limousines utilisees");
+		
+		for(int i = 0; i < limousines.length; i++) {
+			if(limousines[i].trajetAssocie()) {
+				
+				System.out.println("Trajets : ");
+				
+				System.out.println("Ville de depart : " + limousines[i].getTrajet().getVille_depart());
+				System.out.println("Ville d'arrivee : " + limousines[i].getTrajet().getVille_arrivee());
+				System.out.println("Kilometrage de depart : " + limousines[i].getTrajet().getKilo_depart());
+				System.out.println("Kilometrage d'arrivee : " + limousines[i].getTrajet().getKilo_arrivee());
+				
+				System.out.println("");
+				
+
+				System.out.println("Limousines : ");
+
+				System.out.println("Numero d'immatriculation : " + limousines[i].getNo_immatriculation());
+				System.out.println("Couleur : " + limousines[i].getCouleur());
+				System.out.println("Capacite : " + limousines[i].getCapacite());
+				System.out.println("Nombre de passagers : " + limousines[i].getNb_passagers());
+				System.out.println("Numero d'identification du chauffeur : " + limousines[i].getChauffeur().getNo_identification());
+
+				System.out.println("");
+
+			}
+		}
+		
+		Interface.lecture();
+		Interface.menuPrincipal();
+
+	}
 }
